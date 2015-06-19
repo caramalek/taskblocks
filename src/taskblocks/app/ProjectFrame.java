@@ -403,7 +403,6 @@ public class ProjectFrame extends JFrame implements WindowListener, GraphActionL
 		mainP.add(_graph, BorderLayout.CENTER);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(mainP);
-		//toolB.setRollover(true);
 		toolB.setFloatable(false);
 		
 		_graph.setGraphActionListener(this);

@@ -71,7 +71,7 @@ public class Utils {
 	 * @return
 	 */
 	public static int getDayInWeek(long time) {
-		return (int)((time + FIRST_SATURDAY + 2) % 7);
+		return (int)((time + FIRST_SATURDAY + 1) % 7);
 	}
 	
 	/**

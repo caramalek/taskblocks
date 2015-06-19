@@ -327,15 +327,16 @@ public class GraphMouseHandler implements MouseListener, MouseMotionListener, Mo
 				t = ((Pair<Task, Integer>)o).fst;
 			}
 			String taskName = _graph._model.getTaskName(t._userObject);
-			DateFormat df = new SimpleDateFormat("d.M.");
+			DateFormat df = new SimpleDateFormat("M/d");
 			String start = df.format(new Date(t.getStartTime() * Utils.MILLISECONDS_PER_DAY));
 			String end = df.format(new Date(t.getFinishTimeForTooltip() * Utils.MILLISECONDS_PER_DAY));
 			String effort = String.valueOf(t.getEffort());
+			String effortWeeks = String.valueOf(t.getEffort()/5);
 			String duration = String.valueOf((long)((double)t.getEffort() / t.getWorkload()));
 			String comment = t.getComment();
 			_graph.setToolTipText("<html><p style=\"padding:2 5 2 5;\"><b>" + taskName + "</b>"
 					+ "<br>Start: " + start + "&nbsp;&nbsp;&nbsp;End: " + end
-					+ "<br>Effort: " + effort + " days"
+					+ "<br>Effort: " + effort + " days (" + effortWeeks + " weeks)"
 					+ "<br>Duration: " + duration + " days"
 					+ "<br>Comment: "+comment);
 		} else {

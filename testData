@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><taskman version="1">
+  <mans>
+    <man id="1" name="CT - Face Lead" workload="75"/>
+    <man id="2" name="CT - zProdTest 3***" workload="100"/>
+    <man id="3" name="CT - zProdTest 2 (Face)" workload="100"/>
+    <man id="4" name="(1) Months" workload="100"/>
+    <man id="5" name="CT - .Supe" workload="50"/>
+    <man id="6" name="CT - Body Lead" workload="75"/>
+    <man id="7" name="CT - zProdTest 1 (Body)" workload="100"/>
+    <man id="8" name="CT - zProdTest 4***" workload="100"/>
+    <man id="9" name="CT - Tech Lead" workload="75"/>
+    <man id="10" name="(0) Year" workload="100"/>
+  </mans>
+  <tasks>
+    <task color="3" comment="" duration="P30D" id="1" man="1" name="Pipeline Docs &amp; Train" start="2016-12-22T00:00:00"/>
+    <task color="3" comment="" duration="P30D" id="2" man="7" name="Wardrobe Docs &amp; Train" start="2016-12-26T00:00:00"/>
+    <task color="3" comment="" duration="P30D" id="3" man="3" name="Hair Docs &amp; Train" start="2016-12-13T00:00:00"/>
+    <task color="1" comment="" duration="P20D" id="4" man="4" name="March" start="2016-02-29T00:00:00"/>
+    <task color="1" comment="" duration="P65D" id="5" man="10" name="2016" start="2016-01-05T00:00:00"/>
+    <task color="4" comment="" duration="P20D" id="6" man="6" name="Mosys Op Testing" start="2015-07-06T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="7" man="4" name="June" start="2015-06-01T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="8" man="4" name="November" start="2016-10-31T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="9" man="4" name="July" start="2016-07-04T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="10" man="4" name="February" start="2016-02-01T00:00:00"/>
+    <task color="0" comment="" duration="P60D" id="11" man="6" name="Mosys Workflows" start="2016-07-07T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="12" man="4" name="July" start="2015-07-06T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="13" man="4" name="May" start="2015-05-04T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="14" man="4" name="October" start="2016-10-03T01:00:00"/>
+    <task color="4" comment="" duration="P95D" id="15" man="5" name="Pipeline Tools (2/2)" start="2016-07-11T01:00:00"/>
+    <task color="0" comment="" duration="P40D" id="16" man="9" name="Variation Systems" start="2016-07-06T01:00:00"/>
+    <task color="2" comment="" duration="P30D" id="17" man="8" name="Vehicle" start="2016-02-24T00:00:00"/>
+    <task color="2" comment="" duration="P25D" id="18" man="8" name="Bird - Face" start="2016-05-11T01:00:00"/>
+    <task color="2" comment="" duration="P40D" id="19" man="2" name="Bird - Body" start="2016-02-08T00:00:00"/>
+    <task color="1" comment="" duration="P25D" id="20" man="4" name="April" start="2016-03-28T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="21" man="4" name="May" start="2016-05-02T01:00:00"/>
+    <task color="5" comment="" duration="P70D" id="22" man="5" name="(none)" start="2015-03-23T01:00:00"/>
+    <task color="1" comment="" duration="P65D" id="23" man="10" name="2015" start="2015-01-05T00:00:00"/>
+    <task color="1" comment="" duration="P25D" id="24" man="4" name="June" start="2016-05-30T01:00:00"/>
+    <task color="5" comment="" duration="P205D" id="25" man="7" name="(none)" start="2015-03-23T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="26" man="4" name="September" start="2016-08-29T01:00:00"/>
+    <task color="5" comment="" duration="P56D" id="27" man="6" name="(none)" start="2015-03-24T01:00:00"/>
+    <task color="5" comment="" duration="P205D" id="28" man="3" name="(none)" start="2015-03-23T01:00:00"/>
+    <task color="4" comment="" duration="P40D" id="29" man="6" name="Mosys v2 - Bundles" start="2016-01-04T00:00:00"/>
+    <task color="4" comment="" duration="P30D" id="30" man="6" name="Mosys v3 - Anim Interface" start="2016-03-17T01:00:00">
+      <predecessors>
+        <predecessor pred="35"/>
+      </predecessors>
+    </task>
+    <task color="5" comment="" duration="P105D" id="31" man="9" name="(none)" start="2015-03-23T01:00:00"/>
+    <task color="10" comment="" duration="P20D" id="32" man="4" name="March" start="2015-03-02T00:00:00"/>
+    <task color="4" comment="" duration="P45D" id="33" man="9" name="Body Deform v1" start="2015-10-05T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="34" man="4" name="September" start="2015-08-31T01:00:00"/>
+    <task color="4" comment="" duration="P74D" id="35" man="6" name="Mosys v1 - Pkg Port" start="2015-08-11T01:00:00">
+      <predecessors>
+        <predecessor pred="6"/>
+      </predecessors>
+    </task>
+    <task color="1" comment="" duration="P20D" id="36" man="4" name="February" start="2015-02-02T00:00:00"/>
+    <task color="0" comment="" duration="P60D" id="37" man="9" name="Wardrobe Workflows" start="2016-10-25T01:00:00"/>
+    <task color="0" comment="" duration="P30D" id="38" man="3" name="Hair - Basic" start="2016-06-14T01:00:00"/>
+    <task color="4" comment="" duration="P50D" id="39" man="1" name="Face v2 (1/2)" start="2016-04-06T01:00:00">
+      <predecessors>
+        <predecessor pred="73"/>
+      </predecessors>
+    </task>
+    <task color="0" comment="" duration="P100D" id="40" man="3" name="Hair Tools" start="2016-07-26T01:00:00"/>
+    <task color="4" comment="" duration="P50D" id="41" man="7" name="Face v2 (2/2)" start="2016-05-09T01:00:00">
+      <predecessors>
+        <predecessor pred="73"/>
+      </predecessors>
+    </task>
+    <task color="3" comment="" duration="P15D" id="42" man="7" name="Training Curriculum" start="2016-09-12T01:00:00"/>
+    <task color="3" comment="" duration="P30D" id="43" man="7" name="Motion Docs &amp; Train" start="2016-11-14T00:00:00"/>
+    <task color="3" comment="" duration="P30D" id="44" man="7" name="Body Docs &amp; Train" start="2016-10-03T01:00:00"/>
+    <task color="3" comment="" duration="P30D" id="45" man="1" name="Face Docs &amp; Train" start="2016-10-27T01:00:00"/>
+    <task color="2" comment="" duration="P5D" id="46" man="2" name="Mosys v4 - Pages (Quad)" start="2016-06-06T01:00:00"/>
+    <task color="2" comment="" duration="P5D" id="47" man="2" name="Mosys v3 - Bundles (Quad)" start="2016-04-18T01:00:00"/>
+    <task color="2" comment="" duration="P5D" id="48" man="2" name="Mosys v1 - Anim Int. (Quad)" start="2016-02-01T00:00:00"/>
+    <task color="2" comment="" duration="P20D" id="49" man="2" name="Mosys v1 - Pkg Port (Quad)" start="2016-01-04T00:00:00"/>
+    <task color="5" comment="" duration="P105D" id="50" man="1" name="(none)" start="2015-03-23T01:00:00"/>
+    <task color="0" comment="" duration="P60D" id="51" man="1" name="Face Workflows" start="2016-07-07T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="52" man="4" name="January" start="2015-01-05T00:00:00"/>
+    <task color="4" comment="" duration="P45D" id="53" man="1" name="Face Exploration" start="2015-10-05T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="54" man="4" name="August" start="2015-08-03T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="55" man="4" name="October" start="2015-10-05T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="56" man="4" name="April" start="2015-03-30T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="57" man="4" name="December" start="2015-11-30T00:00:00"/>
+    <task color="4" comment="" duration="P45D" id="58" man="9" name="Body Deform v2" start="2016-01-04T00:00:00">
+      <predecessors>
+        <predecessor pred="33"/>
+      </predecessors>
+    </task>
+    <task color="1" comment="" duration="P20D" id="59" man="4" name="November" start="2015-11-02T00:00:00"/>
+    <task color="1" comment="" duration="P20D" id="60" man="4" name="August" start="2016-08-01T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="61" man="4" name="December" start="2016-11-28T00:00:00"/>
+    <task color="0" comment="" duration="P30D" id="62" man="9" name="Advanced Pkgs v2" start="2016-05-11T01:00:00"/>
+    <task color="2" comment="" duration="P15D" id="63" man="8" name="Prop" start="2016-06-15T01:00:00"/>
+    <task color="2" comment="" duration="P25D" id="64" man="8" name="Quad - Face" start="2016-04-06T01:00:00"/>
+    <task color="0" comment="" duration="P40D" id="65" man="7" name="Advanced Pkgs v1" start="2016-07-18T01:00:00"/>
+    <task color="2" comment="" duration="P30D" id="66" man="2" name="Quad - Mosys Tail" start="2016-04-25T01:00:00"/>
+    <task color="2" comment="" duration="P10D" id="67" man="2" name="Quad - Body" start="2016-04-04T01:00:00"/>
+    <task color="1" comment="" duration="P20D" id="68" man="4" name="January" start="2016-01-04T00:00:00"/>
+    <task color="4" comment="" duration="P30D" id="69" man="3" name="Correspondence Tool" start="2016-05-03T01:00:00"/>
+    <task color="4" comment="" duration="P30D" id="70" man="6" name="Mosys v4 - Pages" start="2016-05-12T01:00:00"/>
+    <task color="3" comment="" duration="P11D" id="71" man="10" name="DEPLOY" start="2016-07-04T01:00:00"/>
+    <task color="4" comment="" duration="P90D" id="72" man="7" name="Transfer Tool" start="2016-01-04T00:00:00"/>
+    <task color="4" comment="" duration="P50D" id="73" man="1" name="Face v1" start="2016-01-04T00:00:00">
+      <predecessors>
+        <predecessor pred="53"/>
+      </predecessors>
+    </task>
+    <task color="1" comment="" duration="P20D" id="74" man="4" name="March" start="2017-03-06T00:00:00"/>
+    <task color="0" comment="" duration="P60D" id="75" man="6" name="Body Deform Workflows" start="2016-10-27T01:00:00"/>
+    <task color="4" comment="" duration="P100D" id="76" man="5" name="Pipeline Tools (1/2)" start="2015-10-05T01:00:00"/>
+    <task color="1" comment="" duration="P25D" id="77" man="4" name="January" start="2017-01-02T00:00:00"/>
+    <task color="1" comment="" duration="P20D" id="78" man="4" name="February" start="2017-02-06T00:00:00"/>
+    <task color="0" comment="" duration="P20D" id="79" man="9" name="Workflow Manager" start="2016-09-19T01:00:00"/>
+    <task color="2" comment="" duration="P20D" id="80" man="2" name="Cleanup/Consistency" start="2016-06-13T01:00:00"/>
+  </tasks>
+</taskman>

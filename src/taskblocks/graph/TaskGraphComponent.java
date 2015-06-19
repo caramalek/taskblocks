@@ -523,13 +523,13 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		g2.setColor(Colors.TASKS_TOP_HEADER_COLOR);
 		g2.fillRect(_graphLeft+1, _graphTop-HEADER_HEIGHT+1, _graphWidth-2, HEADER_HEIGHT-1);
 		g2.setColor(Color.WHITE);
+		
 
 		int skip = 1;
 		if(_dayWidth < 10) {
 			skip = 2;
 		}
 
-		Color weekEndColor = new Color(50,50,50,50); // transparent
 		int x = 0, x1, x2;
 		int mostRight = _graphLeft + _graphWidth;
 		
@@ -542,14 +542,14 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			}
 			
 			// draw weekend column
-			g2.setColor(weekEndColor);
+			g2.setColor(Colors.WEEKEND_COLOR);
 			x1 = timeToX(time+5);
 			x2 = timeToX(time+7);
 			g2.fillRect(x1, _graphTop, x2-x1, _graphHeight);
-
+			
 			// draw the date string
 			if((time/7) % skip == 0) {
-				DateFormat df = new SimpleDateFormat("d.M.");
+				DateFormat df = new SimpleDateFormat("M/d");
 				String timeFormatted = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
 				g2.setColor(Color.WHITE);
 				g2.drawString(timeFormatted, x+4, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() -1 );
@@ -558,7 +558,6 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		}
 		
 		// paint the scale on the top
-		//g2.setColor(new Color(100,10,5));
 		g2.setColor(darkHeaderCol);
 		x = 0;
 		for(int i = 0; x < mostRight; i++) {
@@ -567,18 +566,45 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			x2 = timeToX(time + skip*7);
 			int dayInWeek = Utils.getDayInWeek(time);
 			g2.setColor(darkHeaderCol);
+
+			DateFormat df = new SimpleDateFormat("M");
+			String monthStr = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
+			int monthInt = Integer.parseInt(monthStr);
+			if (monthInt %2 == 0) {
+				// Color day based on month
+				g2.setColor(Colors.TASKS_TOP_HEADER_COLOR_B);
+				g2.fillRect(x, _graphTop-HEADER_HEIGHT+1, _dayWidth, HEADER_HEIGHT-1);
+			}
+			
+			// Draw each day hashmark
+			g2.setColor(darkHeaderCol);
 			g2.drawLine(x, _graphTop-3, x, _graphTop-1);
+			
+			
 			if(dayInWeek == 0 && (time/7) % skip == 0) {
+				g2.setColor(darkHeaderCol);
 				g2.drawLine(x, _graphTop-HEADER_HEIGHT, x, _graphTop-1);
 				g2.setColor(lightHeaderCol);
 				g2.drawLine(x+1, _graphTop-1, x+1, _graphTop-HEADER_HEIGHT+1);
-				g2.drawLine(x+1, _graphTop - HEADER_HEIGHT+1, x2-1, _graphTop-HEADER_HEIGHT+1);
+//				g2.drawLine(x+1, _graphTop - HEADER_HEIGHT+1, x2-1, _graphTop-HEADER_HEIGHT+1);
 			}
 		}
 		
-		g2.setColor(darkHeaderCol);
-		//g2.drawLine(_graphLeft, _graphTop, _graphLeft+_graphWidth, _graphTop);
-
+		for(int i = -firstDayInWeek; x < mostRight; i+=7) {
+			long time = _firstDay + i;
+			x = timeToX(time);
+			if(x >= mostRight) {
+				break;
+			}			
+			
+			// draw the date string
+			if((time/7) % skip == 0) {
+				DateFormat df = new SimpleDateFormat("M/d");
+				String timeFormatted = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
+				g2.setColor(Color.WHITE);
+				g2.drawString(timeFormatted, x+4, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() -1 );
+			}
+		}
 		
 		// paint today line
 		long time = System.currentTimeMillis()/ Utils.MILLISECONDS_PER_DAY;
