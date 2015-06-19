@@ -23,10 +23,10 @@ import java.awt.Color;
 
 public class Colors {
 	public static final Color CONNECTION_COLOR = Color.DARK_GRAY;
-	public static final Color TASKS_TOP_HEADER_COLOR = new Color(173,176,186);
-	public static final Color TASKS_TOP_HEADER_COLOR_B = new Color(141,138,148);
+	public static final Color TASKS_TOP_HEADER_COLOR = new Color(143,146,156);
+	public static final Color TASKS_TOP_HEADER_COLOR_B = new Color(111,108,118);
 	public static final Color WEEKEND_COLOR = new Color(25, 25, 25, 25);
 	public static final Color GRID_COLOR = Color.LIGHT_GRAY;
-	public static final Color TASK_COLOR = new Color(160,190,250);
+	public static final Color TASK_COLOR = new Color(99,136,248);
 	public static final Color SELECTOIN_COLOR = Color.RED;
 }

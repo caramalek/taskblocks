@@ -32,11 +32,22 @@ public class ColorLabel {
 	
 	public static ColorLabel[] COLOR_LABELS = new ColorLabel[] {
 		new ColorLabel("None", Colors.TASK_COLOR, 0),
-		new ColorLabel("Red", new Color(255,120,100), 1),
-		new ColorLabel("Orange", new Color(255,200,80), 2),
-		new ColorLabel("Yellow", new Color(255,255,100), 3),
-		new ColorLabel("Green", new Color(140,255,110), 4),
-		new ColorLabel("Gray", new Color(200,200,200), 5),
+		new ColorLabel("Red", new Color(233,87,73), 1),
+		new ColorLabel("Orange", new Color(253,143,28), 2),
+		new ColorLabel("Yellow", new Color(254,236,104), 3),
+		new ColorLabel("Green", new Color(10,198,93), 4),
+		new ColorLabel("Silver", new Color(200,200,200), 5),
+		new ColorLabel("Gold", new Color(254,195,65), 6),
+		new ColorLabel("Sky Blue", new Color(174,209,255), 7),
+		new ColorLabel("Aqua", new Color(98,201,198), 8),
+		new ColorLabel("Lilac", new Color(193,170,245), 9),
+		new ColorLabel("Lime", new Color(182,215,57), 10),
+		new ColorLabel("Taupe", new Color(214,192,176), 11),
+		new ColorLabel("Rose", new Color(244,133,160), 12),
+		new ColorLabel("Purple", new Color(196,124,222), 13),
+		new ColorLabel("Pink", new Color(253,195,203), 14),
+		new ColorLabel("Gray", new Color(130,130,130), 15),
+		new ColorLabel("Silver", new Color(200,200,200), 16)
 	};
 	
 	final public Color _color;
