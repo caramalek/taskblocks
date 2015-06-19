@@ -1,0 +1,12 @@
+
+
+Version:	3.8
+CmdLine:	C:\Users\Cara\Documents\GitHub\taskblocks\TASKBLOCKS.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Users\Cara\Documents\GitHub\taskblocks\.
+Bundled JRE:	C:\Program Files\Java\jre1.8.0_45
+Check launcher:	C:\Program Files\Java\jre1.8.0_45\bin\javaw.exe (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_45\bin\javaw.exe
+Launcher args:	-jar "C:\Users\Cara\Documents\GitHub\taskblocks\TASKBLOCKS.exe"
+Args length:	63/32768 chars
+Exit code:	0
