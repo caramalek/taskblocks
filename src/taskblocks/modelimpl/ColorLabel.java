@@ -44,10 +44,32 @@ public class ColorLabel {
 		new ColorLabel("Lime", new Color(182,215,57), 10),
 		new ColorLabel("Taupe", new Color(214,192,176), 11),
 		new ColorLabel("Rose", new Color(244,133,160), 12),
-		new ColorLabel("Purple", new Color(196,124,222), 13),
+		new ColorLabel("Purple", new Color(156,85,222), 13),
 		new ColorLabel("Pink", new Color(253,195,203), 14),
 		new ColorLabel("Gray", new Color(130,130,130), 15),
-		new ColorLabel("Silver", new Color(200,200,200), 16)
+		new ColorLabel("Magenta", new Color(220,85,222), 32),
+		new ColorLabel("Teal", new Color(50,156,165), 34),
+		new ColorLabel("Brown", new Color(196,126,62), 36),
+		new ColorLabel("BlueLite", new Color(177,195,251), 16),
+		new ColorLabel("RedLite", new Color(244,171,164), 17),
+		new ColorLabel("OrangeLite", new Color(254,199,141), 18),
+		new ColorLabel("YellowLite", new Color(254,245,179), 19),
+		new ColorLabel("GreenLite", new Color(132,226,174), 20),
+		new ColorLabel("SilverLite", new Color(227,227,227), 21),
+		new ColorLabel("GoldLite", new Color(254,225,160), 22),
+		new ColorLabel("SkyBlueLite", new Color(214,232,255), 23),
+		new ColorLabel("AquaLite", new Color(176,228,226), 24),
+		new ColorLabel("LilacLite", new Color(224,212,250), 25),
+		new ColorLabel("LimeLite", new Color(218,235,156), 26),
+		new ColorLabel("TaupeLite", new Color(234,223,215), 27),
+		new ColorLabel("RoseLite", new Color(249,194,207), 28),
+		new ColorLabel("PurpleLite", new Color(205,170,238), 29),
+		new ColorLabel("PinkLite", new Color(254,225,229), 30),
+		new ColorLabel("GrayLite", new Color(192,192,192), 31),
+		new ColorLabel("MagentaLite", new Color(237,170,238), 33),
+		new ColorLabel("TealLite", new Color(152,205,210), 35),
+		new ColorLabel("BrownLite", new Color(225,190,158), 37)
+		
 	};
 	
 	final public Color _color;
