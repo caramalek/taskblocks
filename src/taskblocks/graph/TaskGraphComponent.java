@@ -571,10 +571,10 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			
 			// draw the date string
 			if((time/7) % skip == 0) {
-				DateFormat df = new SimpleDateFormat("M-d");
+				DateFormat df = new SimpleDateFormat("M/d");
 				String timeFormatted = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
 				g2.setColor(Color.WHITE);
-				g2.drawString(timeFormatted, x+4, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() -1 );
+				g2.drawString(timeFormatted, x, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() -1 );
 				g2.setColor(darkHeaderCol);
 			}
 		}
