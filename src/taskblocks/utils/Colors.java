@@ -27,6 +27,6 @@ public class Colors {
 	public static final Color TASKS_TOP_HEADER_COLOR_B = new Color(111,108,118);
 	public static final Color WEEKEND_COLOR = new Color(25, 25, 25, 25);
 	public static final Color GRID_COLOR = Color.LIGHT_GRAY;
-	public static final Color TASK_COLOR = new Color(99,136,248);
+	public static final Color TASK_COLOR = new Color(2,62,164);
 	public static final Color SELECTOIN_COLOR = Color.RED;
 }

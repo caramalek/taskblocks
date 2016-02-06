@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><taskman version="1">
+  <mans>
+    <man id="1" name="Man 01" workload="100"/>
+    <man id="2" name="Man 02" workload="100"/>
+    <man id="3" name="Man 03" workload="100"/>
+    <man id="4" name="Man 04" workload="100"/>
+    <man id="5" name="Man 05" workload="100"/>
+    <man id="6" name="Man 06" workload="100"/>
+    <man id="7" name="Man 07" workload="100"/>
+    <man id="8" name="Man 08" workload="100"/>
+    <man id="9" name="Man 09" workload="100"/>
+    <man id="10" name="Man 10" workload="100"/>
+    <man id="11" name="Man 11" workload="100"/>
+    <man id="12" name="Man 12" workload="100"/>
+    <man id="13" name="Man 13" workload="100"/>
+    <man id="14" name="Man 14" workload="100"/>
+    <man id="15" name="Man 15" workload="100"/>
+    <man id="16" name="Man 16" workload="100"/>
+    <man id="17" name="Man 17" workload="100"/>
+    <man id="18" name="Man 18" workload="100"/>    
+    <man id="19" name="Man 19" workload="100"/>
+    
+  </mans>
+  <tasks>
+    <task color="0" comment="" duration="P10D" id="1" man="1" name="COLOR" start="2016-02-09T00:00:00"/>
+    <task color="1" comment="" duration="P10D" id="2" man="2" name="COLOR" start="2016-02-09T00:00:00"/>
+    <task color="2" comment="" duration="P10D" id="3" man="3" name="COLOR" start="2016-02-09T00:00:00"/>
+    <task color="3" comment="" duration="P10D" id="4" man="4" name="COLOR" start="2016-02-09T00:00:00"/>
+    <task color="4" comment="" duration="P10D" id="5" man="5" name="COLOR" start="2016-02-09T00:00:00"/>
+    <task color="5" comment="" duration="P10D" id="6" man="6" name="COLOR" start="2016-02-09T00:00:00"/>
+    
+  </tasks>
+</taskman>
