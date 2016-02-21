@@ -20,6 +20,7 @@
 package taskblocks.modelimpl;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -32,9 +33,9 @@ public class TaskPainterImpl implements TaskGraphPainter {
 	Color _taskCol = Colors.TASK_COLOR;
 	Color _taskSelCol = _taskCol.brighter();
 	Color _taskBorderCol = _taskCol.darker();
-	Color _taskBorderSelCol = Colors.SELECTOIN_COLOR;
+	Color _taskBorderSelCol = Colors.SELECTION_COLOR;
 	
-	public void paintTask(Object task, Graphics2D g2, Rectangle bounds, boolean selected) {
+	public void paintTask(Object task, Graphics2D g2, Rectangle bounds, boolean selected, int fontSize) {
 		
 		String taskName = ((TaskImpl)task).getName();
 		
@@ -76,12 +77,15 @@ public class TaskPainterImpl implements TaskGraphPainter {
 		
 		FontMetrics fm = g2.getFontMetrics();
 		
-		g2.drawString(taskName, bounds.x + 5, bounds.y+ (fm.getHeight() + bounds.height)/2 - fm.getDescent() + 2);
+		Font font = new Font("Sans Serif", Font.PLAIN, fontSize);
+	    g2.setFont(font);
+	    
+		g2.drawString(taskName, bounds.x + 5, bounds.y+ (fm.getHeight() + bounds.height)/2 - fm.getDescent() + 1);
 
 		g2.setClip(oldClips.x, oldClips.y, oldClips.width, oldClips.height);
 	}
 
-	public void paintRowHeader(Object man, Graphics2D g2, Rectangle bounds, boolean selected) {
+	public void paintRowHeader(Object man, Graphics2D g2, Rectangle bounds, boolean selected, int fontSize) {
 		if(selected) {
 			g2.setColor(Color.LIGHT_GRAY);
 			g2.fillRoundRect(bounds.x+3, bounds.y+6, bounds.width-7, bounds.height-6, 5, 5);
@@ -90,6 +94,7 @@ public class TaskPainterImpl implements TaskGraphPainter {
 		}
 		g2.setColor(Color.black);
 		g2.drawString(((ManImpl)man).getLabel(), bounds.x + 8, bounds.y + (bounds.height + g2.getFontMetrics().getHeight())/2);
+
 	}
 
 }

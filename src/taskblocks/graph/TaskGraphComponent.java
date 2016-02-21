@@ -23,6 +23,7 @@ import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -50,10 +51,12 @@ import taskblocks.utils.Utils;
 
 public class TaskGraphComponent extends JComponent implements ComponentListener, AdjustmentListener {
 	
-	static int ROW_HEIGHT = 30;
+	static int DEFAULT_ROW_HEIGHT = 30;
 	private static int DEFAULT_DAY_WIDTH = 10;
 	static int CONN_PADDING_FACTOR = 6;
 	private static int HEADER_HEIGHT = 20;
+	private static int DEFAULT_HEADER_HEIGHT = 20;
+	static int DEFAULT_FONT_SIZE = 14;
 	
 	// how far from task left/right boundary will the mouse press will be recognized as pressing the boundary?
 	private static final int TOLERANCE = 5;
@@ -62,8 +65,15 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	// constant indicating left boundary of task 
 	static Integer RIGHT = Integer.valueOf(1);
 	
+	// Task row height (can change when using "Present" mode)
+	int _rowHeight = DEFAULT_ROW_HEIGHT;
+	int _headerHeight = DEFAULT_HEADER_HEIGHT;
+	
+	// Font size (can change when using "Present" mode)
+	int _fontSize = DEFAULT_FONT_SIZE;
+	
 	/**
-	 * original mode of tasks. It is not updated when doing changes in graph. Explicit
+	 * original model of tasks. It is not updated when doing changes in graph. Explicit
 	 * call of {@link TaskGraphRepresentation#updateModel()} must be done.
 	 */
 	TaskModel _model;
@@ -74,7 +84,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	 */
 	TaskGraphRepresentation _builder;
 	
-	/** Paiter used to paint tasks and workers */
+	/** Painter used to paint tasks and workers */
 	TaskGraphPainter _painter;
 	
 	/** Listener on user interaction in this graph.
@@ -151,9 +161,9 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	
 	void recountBounds() {
 		Insets insets = getInsets();
-		_graphTop = HEADER_HEIGHT;
+		_graphTop = _headerHeight;
 		_graphTop += insets.top;
-		_graphHeight = getHeight() - HEADER_HEIGHT;
+		_graphHeight = getHeight() - _headerHeight;
 		_graphLeft = _headerWidth;
 		_graphWidth = getWidth() - _headerWidth;
 	
@@ -195,7 +205,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			}
 			
 			if(_builder.isPaintDirty()) {
-				TaskLayouter.recountBounds(_graphTop, ROW_HEIGHT, _builder, this, g2);
+				TaskLayouter.recountBounds(_graphTop, _rowHeight, _builder, this, g2);
 			}
 			
 			g2.clipRect(insets.left, insets.top, getWidth()-insets.left-insets.right, getHeight()-insets.top-insets.bottom);
@@ -209,8 +219,8 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 				row._bounds.x = insets.left;
 				row._bounds.y = row._topPosition-3;
 				row._bounds.width = row._selected ? _headerWidth + _graphWidth : _headerWidth;
-				row._bounds.height = ROW_HEIGHT+6;
-				_painter.paintRowHeader(row._userManObject, g2, row._bounds, row._selected);
+				row._bounds.height = _rowHeight+6;
+				_painter.paintRowHeader(row._userManObject, g2, row._bounds, row._selected, _fontSize);
 				
 				if(row._index > 0) {
 					g2.setColor(Color.lightGray);
@@ -232,20 +242,20 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			
 			// left header vertical line
 			g2.setColor(Color.DARK_GRAY);
-			g2.drawLine(_graphLeft, _graphTop-HEADER_HEIGHT, _graphLeft, _graphTop + _graphHeight+HEADER_HEIGHT);
+			g2.drawLine(_graphLeft, _graphTop-_headerHeight, _graphLeft, _graphTop + _graphHeight+_headerHeight);
 			Color lightHeaderCol = Colors.TASKS_TOP_HEADER_COLOR.brighter().brighter();
 			g2.setColor(lightHeaderCol);
-			g2.drawLine(_graphLeft+1, _graphTop-HEADER_HEIGHT, _graphLeft+1, _graphTop-1);
-			//g2.drawLine(_graphLeft+2, _graphTop-HEADER_HEIGHT, _graphLeft+2, _graphTop + _graphHeight+HEADER_HEIGHT);
+			g2.drawLine(_graphLeft+1, _graphTop-_headerHeight, _graphLeft+1, _graphTop-1);
+			//g2.drawLine(_graphLeft+2, _graphTop-_headerHeight, _graphLeft+2, _graphTop + _graphHeight+_headerHeight);
 			
 			paintWorkerHeader(g2);
 
 			// paint tasks
-			g2.clipRect(_graphLeft+2, _graphTop - HEADER_HEIGHT, _graphWidth-3, _graphHeight+HEADER_HEIGHT);
+			g2.clipRect(_graphLeft+2, _graphTop - _headerHeight, _graphWidth-3, _graphHeight+_headerHeight);
 			Task t;
 			for(int i = _builder._tasks.length-1; i >= 0; i--) {
 				t = _builder._tasks[i];
-				_painter.paintTask(t._userObject, g2, t._bounds, t._selected || t == _mouseHandler._pressedTask);
+				_painter.paintTask(t._userObject, g2, t._bounds, t._selected || t == _mouseHandler._pressedTask, _fontSize);
 				// adjust the holder of content size
 				
 				if(_contentBounds.y > t._bounds.y) {_contentBounds.y = t._bounds.y;}
@@ -268,7 +278,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			if(_mouseHandler._dragMode == GraphMouseHandler.DM_NEW_CONNECTION) {
 				g2.setColor(Color.RED);
 				if(_mouseHandler._destTask != null && _mouseHandler._destTask != _mouseHandler._pressedTask) {
-					_painter.paintTask(_mouseHandler._destTask._userObject, g2, _mouseHandler._destTask._bounds, true);
+					_painter.paintTask(_mouseHandler._destTask._userObject, g2, _mouseHandler._destTask._bounds, true, _fontSize);
 				}
 				g2.drawLine(_mouseHandler._pressX, _mouseHandler._pressY, _mouseHandler.getLastMouseX(), _mouseHandler.getLastMouseY());
 			}
@@ -309,6 +319,40 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		if(newMouseDay != mouseDay) {
 			_firstDay -= newMouseDay-mouseDay;
 		}
+		_builder.setPaintDirty();
+		repaint();
+	}
+	
+	public void decreaseHeight() {		
+		_rowHeight -= 5;
+		_headerHeight -= 5;
+		if (_rowHeight < DEFAULT_ROW_HEIGHT - 10){
+			_rowHeight = DEFAULT_ROW_HEIGHT - 10;
+		}
+		if (_headerHeight < DEFAULT_ROW_HEIGHT - 10){
+			_headerHeight = DEFAULT_ROW_HEIGHT - 10;
+		}
+		_fontSize = (int) (0.6 * _rowHeight - 4.0);
+		if (_fontSize < 10) {
+			_fontSize = 10;
+		}
+
+		_builder.setPaintDirty();
+		repaint();
+	}
+	
+	public void increaseHeight() {		
+		_rowHeight += 5;
+		_headerHeight += 5;
+		if (_rowHeight > DEFAULT_ROW_HEIGHT + 30){
+			_rowHeight = DEFAULT_ROW_HEIGHT + 30;
+		}
+		if (_headerHeight > DEFAULT_HEADER_HEIGHT + 30){
+			_headerHeight = DEFAULT_HEADER_HEIGHT + 30;
+		}
+		_fontSize = (int) (0.6 * _rowHeight - 4.0);
+		
+		
 		_builder.setPaintDirty();
 		repaint();
 	}
@@ -395,7 +439,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	
 	TaskRow findRow(int y) {
 		for(TaskRow row: _builder._rows) {
-			if(y >= row._topPosition-row._topPadding*CONN_PADDING_FACTOR && y <= row._topPosition + ROW_HEIGHT + row._bottomPadding*CONN_PADDING_FACTOR) {
+			if(y >= row._topPosition-row._topPadding*CONN_PADDING_FACTOR && y <= row._topPosition + _rowHeight + row._bottomPadding*CONN_PADDING_FACTOR) {
 				return row;
 			}
 		}
@@ -406,13 +450,13 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		TaskRow myRow = null;
 		int minDist = Integer.MAX_VALUE;
 		for(TaskRow row: _builder._rows) {
-			if(y > row._topPosition && y < row._topPosition + ROW_HEIGHT) {
+			if(y > row._topPosition && y < row._topPosition + _rowHeight) {
 				myRow = row;
 				break;
 			} else {
 				int dist = Math.min(
 						Math.abs(y-row._topPosition),
-						Math.abs(y-(row._topPosition + ROW_HEIGHT))
+						Math.abs(y-(row._topPosition + _rowHeight))
 				);
 				if(dist < minDist) {
 					myRow = row;
@@ -470,7 +514,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 
 	private void paintConnection(Graphics2D g2, Connection c) {
 		if(c._selected) {
-			g2.setColor(Colors.SELECTOIN_COLOR);
+			g2.setColor(Colors.SELECTION_COLOR);
 		} else {
 			g2.setColor(Colors.CONNECTION_COLOR);
 		}
@@ -492,27 +536,27 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	private void paintCursor(Graphics2D g2) {
 		if(_cursorTempTask != null) {
 			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-			_painter.paintTask(_cursorTempTask._userObject, g2, _cursorTempTask._bounds, true);
+			_painter.paintTask(_cursorTempTask._userObject, g2, _cursorTempTask._bounds, true, _fontSize);
 		}
 	}
 
 	private void paintWorkerHeader(Graphics2D g2) {
 		g2.setColor(Colors.TASKS_TOP_HEADER_COLOR);
-
+		
 		FontMetrics fm = g2.getFontMetrics();
 		
-		g2.fillRect(_graphLeft-_headerWidth, _graphTop-HEADER_HEIGHT, _headerWidth, HEADER_HEIGHT);
+		g2.fillRect(_graphLeft-_headerWidth, _graphTop-_headerHeight, _headerWidth, _headerHeight);
 		g2.setColor(Color.WHITE);
-		g2.drawString("Worker", _graphLeft-_headerWidth + 8, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() );
+		g2.drawString("Worker", _graphLeft-_headerWidth + 8, _graphTop-_headerHeight + (fm.getHeight() + _headerHeight)/2 - fm.getDescent() );
 		
 		Color darkHeaderCol = Colors.TASKS_TOP_HEADER_COLOR.darker().darker();
 		Color lightHeaderCol = Colors.TASKS_TOP_HEADER_COLOR.brighter().brighter();
 		g2.setColor(darkHeaderCol);
-		g2.drawRect(_graphLeft-_headerWidth, _graphTop-HEADER_HEIGHT, _graphWidth+_headerWidth-1, HEADER_HEIGHT+_graphHeight-1);
+		g2.drawRect(_graphLeft-_headerWidth, _graphTop-_headerHeight, _graphWidth+_headerWidth-1, _headerHeight+_graphHeight-1);
 		g2.drawLine(_graphLeft-_headerWidth, _graphTop, _graphLeft+_graphWidth, _graphTop);
 		g2.setColor(lightHeaderCol);
-		g2.drawLine(_graphLeft-_headerWidth+1, _graphTop-1, _graphLeft-_headerWidth+1, _graphTop-HEADER_HEIGHT+1);
-		g2.drawLine(_graphLeft-_headerWidth+1, _graphTop-HEADER_HEIGHT+1, _graphLeft-1, _graphTop-HEADER_HEIGHT+1);
+		g2.drawLine(_graphLeft-_headerWidth+1, _graphTop-1, _graphLeft-_headerWidth+1, _graphTop-_headerHeight+1);
+		g2.drawLine(_graphLeft-_headerWidth+1, _graphTop-_headerHeight+1, _graphLeft-1, _graphTop-_headerHeight+1);
 	}
 	
 	private void paintHeaderAndWeekends(Graphics2D g2) {
@@ -521,7 +565,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		FontMetrics fm = g2.getFontMetrics();
 		
 		g2.setColor(Colors.TASKS_TOP_HEADER_COLOR);
-		g2.fillRect(_graphLeft+1, _graphTop-HEADER_HEIGHT+1, _graphWidth-2, HEADER_HEIGHT-1);
+		g2.fillRect(_graphLeft+1, _graphTop-_headerHeight+1, _graphWidth-2, _headerHeight-1);
 		g2.setColor(Color.WHITE);
 		
 
@@ -550,7 +594,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 			int monthInt = Integer.parseInt(monthStr);
 			if (monthInt %2 == 0) {
 				g2.setColor(Colors.TASKS_TOP_HEADER_COLOR_B);
-				g2.fillRect(j, _graphTop-HEADER_HEIGHT+1, _dayWidth, HEADER_HEIGHT-1);
+				g2.fillRect(j, _graphTop-_headerHeight+1, _dayWidth, _headerHeight-1);
 			}
 		}
 		
@@ -574,7 +618,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 				DateFormat df = new SimpleDateFormat("M/d");
 				String timeFormatted = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
 				g2.setColor(Color.WHITE);
-				g2.drawString(timeFormatted, x, _graphTop-HEADER_HEIGHT + (fm.getHeight() + HEADER_HEIGHT)/2 - fm.getDescent() -1 );
+				g2.drawString(timeFormatted, x, _graphTop-_headerHeight + (fm.getHeight() + _headerHeight)/2 - fm.getDescent() -1 );
 				g2.setColor(darkHeaderCol);
 			}
 		}

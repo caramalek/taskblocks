@@ -61,7 +61,7 @@ class Task extends GraphObject {
 	
 	private String _comment;
 	
-	/** Bouds of the displayed task rectangle (in pixels, on the TaskGraphComponent) */
+	/** Bounds of the displayed task rectangle (in pixels, on the TaskGraphComponent) */
 	Rectangle _bounds = new Rectangle();
 	
 	/** 1 bit information used in algorithms traversing through the task dependency graph */

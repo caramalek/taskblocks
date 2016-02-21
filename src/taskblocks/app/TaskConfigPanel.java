@@ -51,6 +51,7 @@ public class TaskConfigPanel extends JPanel {
 	JSpinner planedEffortSP;
 	JSpinner workedTimeSP;
 	JComboBox colorLabelCB;
+	JTextField objectiveTF;
 	JTextArea commentTA;
 	
 	public TaskConfigPanel(TaskImpl task, TaskModelImpl model) {
@@ -73,9 +74,13 @@ public class TaskConfigPanel extends JPanel {
 		JLabel colorL = new JLabel("Color Label:");
 		colorLabelCB = new JComboBox(new DefaultComboBoxModel(ColorLabel.COLOR_LABELS));
 		colorLabelCB.setRenderer(new ColorLabelRenderer(colorLabelCB.getRenderer()));
+		// Bugzilla
 		JLabel bugIdL = new JLabel("Bugzilla ID:");
 		bugIdL.setForeground(Color.GRAY);
 		bugIdTF = new JTextField(15);
+		// Objective
+		JLabel objectiveL = new JLabel("Objective:");
+		objectiveTF = new JTextField(15);
 		// Comment
 		JLabel commentL = new JLabel("Comment:");
 		commentL.setForeground(Color.GRAY);
@@ -83,6 +88,7 @@ public class TaskConfigPanel extends JPanel {
 		commentTA.setLineWrap( true );
 		JScrollPane scrollPane = new JScrollPane(commentTA); 
 		
+
 		
 		//layout components
 		contentP.setLayout(new GridBagLayout());
@@ -101,6 +107,7 @@ public class TaskConfigPanel extends JPanel {
 		gc.gridy++; contentP.add(manL, gc);
 		gc.gridy++; contentP.add(colorL, gc);
 		gc.gridy++; contentP.add(bugIdL, gc);
+		gc.gridy++; contentP.add(objectiveL, gc);
 		gc.anchor = GridBagConstraints.NORTHEAST;
 		gc.gridy++; contentP.add(commentL, gc);
 		gc.anchor = GridBagConstraints.EAST;
@@ -118,6 +125,7 @@ public class TaskConfigPanel extends JPanel {
 		gc.gridy++; contentP.add(manCB, gc);
 		gc.gridy++; contentP.add(colorLabelCB, gc);
 		gc.gridy++; contentP.add(bugIdTF, gc);
+		gc.gridy++; contentP.add(objectiveTF, gc);
 		gc.fill = GridBagConstraints.BOTH;
 		gc.weighty = 1;
 		gc.gridy++; contentP.add(scrollPane, gc);
@@ -126,6 +134,7 @@ public class TaskConfigPanel extends JPanel {
 		nameTF.setText(_task.getName());
 		manCB.setSelectedItem(_task.getMan());
 		bugIdTF.setText(_task.getBugId());
+		objectiveTF.setText(_task.getObjective());
 		commentTA.setText( _task.getComment() );
 		commentTA.setCaretPosition( 0 );
 		if(_task.getColorLabel() != null) {

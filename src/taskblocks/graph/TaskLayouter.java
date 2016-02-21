@@ -131,7 +131,7 @@ class TaskLayouter {
 		} // for all rows
 		
 		for(Connection c: _builder._connections) {
-			recountConnectionBounds(c, _graph);
+			recountConnectionBounds(c, _graph, _rowHeight);
 		}
 
 		_builder.clearPaintDirtyFlag();
@@ -172,7 +172,7 @@ class TaskLayouter {
 		return false;
 	}
 	
-	static void recountConnectionBounds(Connection c, TaskGraphComponent _graph) {
+	static void recountConnectionBounds(Connection c, TaskGraphComponent _graph, int _rowHeight) {
 		long fromTime = c._fromTask.getFinishTime();
 		long toTime = c._toTask.getStartTime();
 		int x1 = _graph.timeToX(fromTime);
@@ -180,7 +180,7 @@ class TaskLayouter {
 		int y1, y2;
 		boolean goingDown = c._fromTask.getRow()._index <= c._toTask.getRow()._index;
 		if(goingDown) {
-			y1 = c._fromTask.getRow()._topPosition + TaskGraphComponent.ROW_HEIGHT;
+			y1 = c._fromTask.getRow()._topPosition + _rowHeight;
 		} else {
 			y1 = c._fromTask.getRow()._topPosition + TaskGraphComponent.CONN_PADDING_FACTOR;
 		}
@@ -188,7 +188,7 @@ class TaskLayouter {
 		if(commingFromUp) {
 			y2 = c._toTask.getRow()._topPosition + TaskGraphComponent.CONN_PADDING_FACTOR;
 		} else {
-			y2 = c._toTask.getRow()._topPosition + TaskGraphComponent.ROW_HEIGHT;
+			y2 = c._toTask.getRow()._topPosition + _rowHeight;
 		}
 
 		

@@ -17,14 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package taskblocks.graph;
+package taskblocks.utils;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-
-public interface TaskGraphPainter {
-
-	public void paintRowHeader(Object man, Graphics2D g2, Rectangle bounds, boolean selected, int fontSize);
-	
-	public void paintTask(Object task, Graphics2D g2, Rectangle bounds, boolean selected, int fontSize);
+public class Sizes {
+	public float FONT_SIZE = 12.0f;
+	public float BIG_FONT_SIZE = 22.0f;
 }

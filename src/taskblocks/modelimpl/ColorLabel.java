@@ -32,7 +32,7 @@ public class ColorLabel {
 	
 	public static ColorLabel[] COLOR_LABELS = new ColorLabel[] {
 		new ColorLabel("Blue", Colors.TASK_COLOR, 0),
-		new ColorLabel("Red", new Color(206,32,32), 1),
+		new ColorLabel("Red", new Color(240,67,67), 1),
 		new ColorLabel("Orange", new Color(246,121,54), 2),
 		new ColorLabel("Yellow", new Color(255, 235,0), 3),
 		new ColorLabel("Green", new Color(0,158,25), 4),

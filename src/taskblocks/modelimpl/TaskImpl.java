@@ -32,6 +32,7 @@ public class TaskImpl implements Cloneable {
 	private TaskImpl[] _predecessors = new TaskImpl[0];
 	private ManImpl _man;
 	private String _comment;
+	private String _objective;
 	
 	private ColorLabel _colorLabel;
 	
@@ -61,6 +62,7 @@ public class TaskImpl implements Cloneable {
 		_man = t._man;
 		_comment = t._comment;
 		_colorLabel = t._colorLabel;
+		_objective = t._objective;
 	}
 	
 	public long getEffort() {
@@ -143,6 +145,17 @@ public class TaskImpl implements Cloneable {
 	
 	public String getComment(){
 		return _comment;
+	}
+	
+	public void setObjective( String objective ){
+		if( objective == null ){
+			objective = "";
+		}
+		_objective = objective;
+	}
+	
+	public String getObjective(){
+		return _objective;
 	}
 	
 	public String getBugId() {

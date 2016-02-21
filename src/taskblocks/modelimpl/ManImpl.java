@@ -22,6 +22,7 @@ package taskblocks.modelimpl;
 public class ManImpl implements Cloneable {
 	
 	private String _name;
+	private String _nickname;
 	private double _workload = 1.0; // by default, the worker will work full time on its jobs
 	
 	/** Used only when saving */
@@ -41,11 +42,16 @@ public class ManImpl implements Cloneable {
 	
 	public void updateFrom(ManImpl m) {
 		_name = m._name;
+		_nickname = m._nickname;
 		_workload = m._workload;
 	}
 	
 	public String getName() {
 		return _name;
+	}
+	
+	public String getNickname() {
+		return _nickname;
 	}
 	
 	public String getLabel() {
@@ -58,6 +64,10 @@ public class ManImpl implements Cloneable {
 	
 	public void setName(String name) {
 		_name = name;
+	}
+	
+	public void setNickname(String nickname) {
+		_nickname = nickname;
 	}
 	
 	public String toString() {

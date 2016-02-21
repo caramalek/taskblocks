@@ -54,7 +54,8 @@ public class TaskConfigDialog extends ConfigDialogStub  {
 		task.setBugId(_cfgPanel.bugIdTF.getText());
 		task.setMan(((ManImpl)_cfgPanel.manCB.getSelectedItem()));
 		task.setColorLabel((ColorLabel)_cfgPanel.colorLabelCB.getSelectedItem());
-		task.setComment( _cfgPanel.commentTA.getText() );
+		task.setObjective( _cfgPanel.objectiveTF.getText() );
+		task.setComment( _cfgPanel.commentTA.getText() );		
 		_applied = true;
 	}
 	
@@ -110,6 +111,7 @@ public class TaskConfigDialog extends ConfigDialogStub  {
 			_task.setEffort(5);
             _task.setWorkedTime(0);
             _task.setComment("");
+            _task.setObjective("");
 		} else {
 			setTitle("Task " + _task.getName());
 		}

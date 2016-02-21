@@ -73,7 +73,12 @@ public class MyToolBar extends JToolBar {
 		
 		b.setOpaque(false);
 		b.setRolloverEnabled(false);
-		b.setFont(b.getFont().deriveFont(Font.PLAIN));
+		
+		Font myFont = b.getFont().deriveFont(Font.PLAIN);
+  		float fontSize = (float) myFont.getSize();
+		fontSize = fontSize * (float)1.25;
+		
+		b.setFont(myFont.deriveFont(fontSize));
 		b.setContentAreaFilled(false);
 
 		add(b);

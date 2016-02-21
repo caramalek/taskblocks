@@ -75,6 +75,7 @@ public class ManConfigDialog extends ConfigDialogStub  {
 
 	private void fillMan(ManImpl man) {
 		man.setName(_cfgPanel.nameTF.getText());
+		man.setNickname(_cfgPanel.nicknameTF.getText());
 		man.setWorkload(((Number)_cfgPanel._workloadSpin.getValue()).doubleValue()/100.0);
 	}
 

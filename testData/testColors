@@ -1,33 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><taskman version="1">
   <mans>
-    <man id="1" name="Man 01" workload="100"/>
-    <man id="2" name="Man 02" workload="100"/>
-    <man id="3" name="Man 03" workload="100"/>
-    <man id="4" name="Man 04" workload="100"/>
-    <man id="5" name="Man 05" workload="100"/>
-    <man id="6" name="Man 06" workload="100"/>
-    <man id="7" name="Man 07" workload="100"/>
-    <man id="8" name="Man 08" workload="100"/>
-    <man id="9" name="Man 09" workload="100"/>
-    <man id="10" name="Man 10" workload="100"/>
-    <man id="11" name="Man 11" workload="100"/>
-    <man id="12" name="Man 12" workload="100"/>
-    <man id="13" name="Man 13" workload="100"/>
-    <man id="14" name="Man 14" workload="100"/>
-    <man id="15" name="Man 15" workload="100"/>
-    <man id="16" name="Man 16" workload="100"/>
-    <man id="17" name="Man 17" workload="100"/>
-    <man id="18" name="Man 18" workload="100"/>    
-    <man id="19" name="Man 19" workload="100"/>
-    
+    <man id="1" name="Man 01" nickname="" workload="100"/>
+    <man id="2" name="Man 02" nickname="" workload="100"/>
+    <man id="3" name="Man 03" nickname="" workload="100"/>
+    <man id="4" name="Man 04" nickname="" workload="100"/>
+    <man id="5" name="Man 05" nickname="" workload="100"/>
+    <man id="6" name="Man 06" nickname="" workload="100"/>
+    <man id="7" name="Man 07" nickname="" workload="100"/>
+    <man id="8" name="Man 08" nickname="" workload="100"/>
+    <man id="9" name="Man 09" nickname="" workload="100"/>
+    <man id="10" name="Man 10" nickname="BLUEGUY" workload="100"/>
+    <man id="11" name="Man 11" nickname="" workload="100"/>
+    <man id="12" name="Man 12" nickname="" workload="100"/>
+    <man id="13" name="Man 13" nickname="" workload="100"/>
+    <man id="14" name="Man 14" nickname="" workload="100"/>
+    <man id="15" name="Man 15" nickname="" workload="100"/>
+    <man id="16" name="Man 16" nickname="" workload="100"/>
+    <man id="17" name="Man 17" nickname="" workload="100"/>
+    <man id="18" name="Man 18" nickname="" workload="100"/>
+    <man id="19" name="Man 19" nickname="" workload="100"/>    
+    <man id="20" name="Man 20" nickname="" workload="100"/>    
+    <man id="21" name="Man 21" nickname="" workload="100"/>
+    <man id="22" name="Man 22" nickname="" workload="100"/>
+    <man id="23" name="Man 23" nickname="" workload="100"/>
+    <man id="24" name="Man 24" nickname="" workload="100"/>
+    <man id="25" name="Man 25" nickname="" workload="100"/>
+    <man id="26" name="Man 26" nickname="" workload="100"/>
+    <man id="27" name="Man 27" nickname="" workload="100"/>
+    <man id="28" name="Man 28" nickname="" workload="100"/>
+    <man id="29" name="Man 29" nickname="" workload="100"/>    
+    <man id="30" name="Man 30" nickname="" workload="100"/>    
+    <man id="31" name="Man 31" nickname="" workload="100"/>   
+    <man id="32" name="Man 32" nickname="" workload="100"/>
   </mans>
   <tasks>
-    <task color="0" comment="" duration="P10D" id="1" man="1" name="COLOR" start="2016-02-09T00:00:00"/>
-    <task color="1" comment="" duration="P10D" id="2" man="2" name="COLOR" start="2016-02-09T00:00:00"/>
-    <task color="2" comment="" duration="P10D" id="3" man="3" name="COLOR" start="2016-02-09T00:00:00"/>
-    <task color="3" comment="" duration="P10D" id="4" man="4" name="COLOR" start="2016-02-09T00:00:00"/>
-    <task color="4" comment="" duration="P10D" id="5" man="5" name="COLOR" start="2016-02-09T00:00:00"/>
-    <task color="5" comment="" duration="P10D" id="6" man="6" name="COLOR" start="2016-02-09T00:00:00"/>
-    
+    <task color="0" comment="" duration="P10D" id="1" man="1" name="COLOR 0" objective="" start="2016-02-09T00:00:00"/>
+    <task color="1" comment="" duration="P10D" id="2" man="2" name="COLOR 1" objective="" start="2016-02-09T00:00:00"/>
+    <task color="2" comment="" duration="P10D" id="3" man="3" name="COLOR 2" objective="BLUE" start="2016-02-09T00:00:00"/>
+    <task color="3" comment="" duration="P10D" id="4" man="4" name="COLOR 3" objective="" start="2016-02-09T00:00:00"/>
+    <task color="4" comment="" duration="P10D" id="5" man="5" name="COLOR 4" objective="" start="2016-02-09T00:00:00"/>
+    <task color="5" comment="" duration="P10D" id="6" man="6" name="COLOR 5" objective="" start="2016-02-09T00:00:00"/>
+    <task color="6" comment="" duration="P10D" id="7" man="7" name="COLOR 6" objective="" start="2016-02-09T00:00:00"/>
+    <task color="7" comment="" duration="P10D" id="8" man="8" name="COLOR 7" objective="" start="2016-02-09T00:00:00"/>
+    <task color="8" comment="" duration="P10D" id="9" man="9" name="COLOR 8" objective="BLUE" start="2016-02-09T00:00:00"/>
+    <task color="9" comment="" duration="P10D" id="10" man="10" name="COLOR 9" objective="" start="2016-02-09T00:00:00"/>
+    <task color="10" comment="" duration="P10D" id="11" man="11" name="COLOR 10" objective="" start="2016-02-09T00:00:00"/>
+    <task color="11" comment="" duration="P10D" id="12" man="12" name="COLOR 11" objective="" start="2016-02-09T00:00:00"/>
+    <task color="12" comment="" duration="P10D" id="13" man="13" name="COLOR 12" objective="" start="2016-02-09T00:00:00"/>
+    <task color="13" comment="" duration="P10D" id="14" man="14" name="COLOR 13" objective="" start="2016-02-09T00:00:00"/>
+    <task color="14" comment="" duration="P10D" id="15" man="15" name="COLOR 14" objective="BLUE" start="2016-02-09T00:00:00"/>
+    <task color="15" comment="" duration="P10D" id="16" man="16" name="COLOR 15" objective="" start="2016-02-09T00:00:00"/>
+    <task color="16" comment="" duration="P10D" id="17" man="17" name="COLOR 16" objective="" start="2016-02-09T00:00:00"/>
+    <task color="17" comment="" duration="P10D" id="18" man="18" name="COLOR 17" objective="" start="2016-02-09T00:00:00"/>
+    <task color="18" comment="" duration="P10D" id="19" man="19" name="COLOR 18" objective="" start="2016-02-09T00:00:00"/>
+    <task color="19" comment="" duration="P10D" id="20" man="20" name="COLOR 19" objective="" start="2016-02-09T00:00:00"/>
+    <task color="20" comment="" duration="P10D" id="21" man="21" name="COLOR 20" objective="BLUE" start="2016-02-09T00:00:00"/>
+    <task color="21" comment="" duration="P10D" id="22" man="22" name="COLOR 21" objective="" start="2016-02-09T00:00:00"/>
+    <task color="22" comment="" duration="P10D" id="23" man="23" name="COLOR 22" objective="" start="2016-02-09T00:00:00"/>
+    <task color="23" comment="" duration="P10D" id="24" man="24" name="COLOR 23" objective="" start="2016-02-09T00:00:00"/>
+    <task color="24" comment="" duration="P10D" id="25" man="25" name="COLOR 24" objective="BLUE" start="2016-02-09T00:00:00"/>
+    <task color="25" comment="" duration="P10D" id="26" man="26" name="COLOR 25" objective="" start="2016-02-09T00:00:00"/>
+    <task color="26" comment="" duration="P10D" id="27" man="27" name="COLOR 26" objective="" start="2016-02-09T00:00:00"/>
+    <task color="27" comment="" duration="P10D" id="28" man="28" name="COLOR 27" objective="" start="2016-02-09T00:00:00"/>
+    <task color="28" comment="" duration="P10D" id="29" man="29" name="COLOR 28" objective="" start="2016-02-09T00:00:00"/>
+    <task color="29" comment="" duration="P10D" id="30" man="30" name="COLOR 29" objective="" start="2016-02-09T00:00:00"/>
+    <task color="30" comment="" duration="P10D" id="31" man="31" name="COLOR 30" objective="BLUE" start="2016-02-09T00:00:00"/>    
+    <task color="31" comment="" duration="P10D" id="32" man="32" name="COLOR 31" objective="BLUE" start="2016-02-09T00:00:00"/>
   </tasks>
 </taskman>

@@ -36,6 +36,7 @@ import taskblocks.modelimpl.TaskModelImpl;
 public class ManConfigPanel extends JPanel {
 
 	JTextField nameTF;
+	JTextField nicknameTF;
 	JSpinner _workloadSpin;
 	ManImpl _man;
 	TaskModelImpl _model;
@@ -50,8 +51,10 @@ public class ManConfigPanel extends JPanel {
 		// create components
 		JPanel contentP = this;
 		JLabel nameL = new JLabel("Name:");
+		JLabel nicknameL = new JLabel("Nickname:");
 		JLabel workloadL = new JLabel("Workload (%):");
 		nameTF = new JTextField(15);
+		nicknameTF = new JTextField(15);
 		_workloadSpin=new JSpinner(new SpinnerNumberModel(100, 10, 100, 10));
 		
 		//layout components
@@ -66,6 +69,8 @@ public class ManConfigPanel extends JPanel {
 		//
 		contentP.add(nameL, gc);
 		gc.gridy++;
+		contentP.add(nicknameL, gc);
+		gc.gridy++;
 		contentP.add(workloadL, gc);
 		
 		// add edit fields
@@ -76,10 +81,13 @@ public class ManConfigPanel extends JPanel {
 		//
 		contentP.add(nameTF, gc);
 		gc.gridy++;
+		contentP.add(nicknameTF, gc);
+		gc.gridy++;
 		contentP.add(_workloadSpin, gc);
 		
 		// set component properties
 		nameTF.setText(_man.getName());
+		nicknameTF.setText(_man.getNickname());
 		_workloadSpin.setValue((int)(_man.getWorkload()*100.0));
 	}
 

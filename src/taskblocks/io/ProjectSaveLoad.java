@@ -77,6 +77,7 @@ public class ProjectSaveLoad {
 	
 	public static final String VERSION_A = "version";
 	public static final String NAME_A = "name";
+	public static final String NICKNAME_A = "nickname";
 	public static final String WORKLOAD_A = "workload";
 	public static final String ID_A = "id";
 	public static final String START_A = "start";
@@ -86,6 +87,7 @@ public class ProjectSaveLoad {
 	public static final String MAN_A = "man";
 	public static final String PRED_A = "pred";
 	public static final String COLOR_A = "color";
+	public static final String OBJ_A = "objective";
 	public static final String COMM_A = "comment";
 	// Id in Bugzilla, used when exporting to it.
 	public static final String BUGID_A = "bugid";
@@ -198,6 +200,7 @@ public class ProjectSaveLoad {
 					}
 					String bugId = taskE.getAttribute(BUGID_A);
 					String colorTxt = taskE.getAttribute(COLOR_A);
+					String objective = taskE.getAttribute(OBJ_A);
 					String comment = taskE.getAttribute(COMM_A);
 					
 					if(bugId != null && bugId.length() == 0) {
@@ -211,6 +214,7 @@ public class ProjectSaveLoad {
 					task.setWorkedTime(taskWorkedTime);
 					task.setMan(man);
 					task.setComment( comment );
+					task.setObjective(objective);
 					task.setBugId(bugId);
 					if(colorTxt != null && colorTxt.length() > 0) {
 						int colorIndex = Integer.parseInt(colorTxt);
@@ -391,6 +395,7 @@ public class ProjectSaveLoad {
 		Element manE = mansE.getOwnerDocument().createElement(MAN_E);
 		manE.setAttribute(ID_A, man._id);
 		manE.setAttribute(NAME_A, man.getName());
+		manE.setAttribute(NICKNAME_A, man.getNickname());
 		manE.setAttribute(WORKLOAD_A, String.valueOf((int)(man.getWorkload()*100)));
 		mansE.appendChild(manE);
 	}
@@ -449,6 +454,7 @@ public class ProjectSaveLoad {
 		}
 		taskE.setAttribute(MAN_A, t.getMan()._id);
 		taskE.setAttribute(COMM_A, t.getComment());
+		taskE.setAttribute(OBJ_A, t.getObjective());
 		if(t.getColorLabel() != null) {
 			taskE.setAttribute(COLOR_A, String.valueOf(t.getColorLabel()._index));
 		}

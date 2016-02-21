@@ -103,6 +103,18 @@ public class ProjectFrame extends JFrame implements WindowListener, GraphActionL
 		}
 	};
 	
+	Action _increaseHeightAction = new MyAction("Increase Height", TaskBlocks.getImage("zoomIn.png")) {
+		public void actionPerformed(ActionEvent arg0) {
+			_graph.increaseHeight();
+		}
+	};
+	
+	Action _decreaseHeightAction = new MyAction("Decrease Height", TaskBlocks.getImage("zoomOut.png")) {
+		public void actionPerformed(ActionEvent arg0) {
+			_graph.decreaseHeight();
+		}
+	};
+	
 	Action _closeFileAction = new MyAction("Close") {
 		public void actionPerformed(ActionEvent arg0) {
 			tryClose();
@@ -389,6 +401,8 @@ public class ProjectFrame extends JFrame implements WindowListener, GraphActionL
 		toolB.add(Box.createHorizontalStrut(4));
 		toolB.add(_scaleUpAction);
 		toolB.add(_scaleDownAction);
+		toolB.add(_increaseHeightAction);
+		toolB.add(_decreaseHeightAction);
 		toolB.add(Box.createHorizontalStrut(8));
 		toolB.add(_leftAction);
 		toolB.add(_rightAction);
