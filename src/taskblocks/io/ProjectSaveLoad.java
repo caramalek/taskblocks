@@ -147,8 +147,10 @@ public class ProjectSaveLoad {
 					String manName = manE.getAttribute(NAME_A);
 					String manWorkload = manE.getAttribute(WORKLOAD_A);
 					String manId = manE.getAttribute(ID_A);
+					String manNickname = manE.getAttribute(NICKNAME_A);
 					ManImpl man = new ManImpl();
 					man.setName(manName);
+					man.setNickname(manNickname);
 					if(manWorkload != null && manWorkload.trim().length() > 0) {
 						try {
 							man.setWorkload(Double.parseDouble(manWorkload.trim())/100.0);

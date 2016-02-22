@@ -54,7 +54,6 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	static int DEFAULT_ROW_HEIGHT = 30;
 	private static int DEFAULT_DAY_WIDTH = 10;
 	static int CONN_PADDING_FACTOR = 6;
-	private static int HEADER_HEIGHT = 20;
 	private static int DEFAULT_HEADER_HEIGHT = 20;
 	static int DEFAULT_FONT_SIZE = 14;
 	
@@ -65,12 +64,13 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	// constant indicating left boundary of task 
 	static Integer RIGHT = Integer.valueOf(1);
 	
-	// Task row height (can change when using "Present" mode)
+	// Task row height (can change when Increasing or Decreasing Height)
 	int _rowHeight = DEFAULT_ROW_HEIGHT;
 	int _headerHeight = DEFAULT_HEADER_HEIGHT;
 	
-	// Font size (can change when using "Present" mode)
+	// Font size (can change when Increasing or Decreasing Height)
 	int _fontSize = DEFAULT_FONT_SIZE;
+	int _dateFontSize = DEFAULT_FONT_SIZE;
 	
 	/**
 	 * original model of tasks. It is not updated when doing changes in graph. Explicit
@@ -264,7 +264,7 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 				}
 			}
 			// paint weekends and header
-			paintHeaderAndWeekends(g2);
+			paintHeaderAndWeekends(g2, _dateFontSize);
 
 			// paint connections
 			for(Connection c: _builder._connections) {
@@ -325,17 +325,10 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	
 	public void decreaseHeight() {		
 		_rowHeight -= 5;
-		_headerHeight -= 5;
 		if (_rowHeight < DEFAULT_ROW_HEIGHT - 10){
 			_rowHeight = DEFAULT_ROW_HEIGHT - 10;
 		}
-		if (_headerHeight < DEFAULT_ROW_HEIGHT - 10){
-			_headerHeight = DEFAULT_ROW_HEIGHT - 10;
-		}
-		_fontSize = (int) (0.6 * _rowHeight - 4.0);
-		if (_fontSize < 10) {
-			_fontSize = 10;
-		}
+		_fontSize = (int) (0.6 * _rowHeight - 4.0);	
 
 		_builder.setPaintDirty();
 		repaint();
@@ -343,15 +336,10 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 	
 	public void increaseHeight() {		
 		_rowHeight += 5;
-		_headerHeight += 5;
 		if (_rowHeight > DEFAULT_ROW_HEIGHT + 30){
 			_rowHeight = DEFAULT_ROW_HEIGHT + 30;
 		}
-		if (_headerHeight > DEFAULT_HEADER_HEIGHT + 30){
-			_headerHeight = DEFAULT_HEADER_HEIGHT + 30;
-		}
-		_fontSize = (int) (0.6 * _rowHeight - 4.0);
-		
+		_fontSize = (int) (0.6 * _rowHeight - 4.0);		
 		
 		_builder.setPaintDirty();
 		repaint();
@@ -559,10 +547,14 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 		g2.drawLine(_graphLeft-_headerWidth+1, _graphTop-_headerHeight+1, _graphLeft-1, _graphTop-_headerHeight+1);
 	}
 	
-	private void paintHeaderAndWeekends(Graphics2D g2) {
+	private void paintHeaderAndWeekends(Graphics2D g2, int fontSize) {
 		Color lightHeaderCol = Colors.TASKS_TOP_HEADER_COLOR.brighter().brighter();
 		Color darkHeaderCol = Colors.TASKS_TOP_HEADER_COLOR.darker().darker();
 		FontMetrics fm = g2.getFontMetrics();
+		
+		Font font = new Font("Sans Serif", Font.PLAIN, 14);
+	    g2.setFont(font);
+
 		
 		g2.setColor(Colors.TASKS_TOP_HEADER_COLOR);
 		g2.fillRect(_graphLeft+1, _graphTop-_headerHeight+1, _graphWidth-2, _headerHeight-1);
@@ -618,7 +610,8 @@ public class TaskGraphComponent extends JComponent implements ComponentListener,
 				DateFormat df = new SimpleDateFormat("M/d");
 				String timeFormatted = df.format(new Date(time*Utils.MILLISECONDS_PER_DAY));
 				g2.setColor(Color.WHITE);
-				g2.drawString(timeFormatted, x, _graphTop-_headerHeight + (fm.getHeight() + _headerHeight)/2 - fm.getDescent() -1 );
+				
+				g2.drawString(timeFormatted, x, _graphTop-_headerHeight + (DEFAULT_FONT_SIZE + _headerHeight)/2);
 				g2.setColor(darkHeaderCol);
 			}
 		}
